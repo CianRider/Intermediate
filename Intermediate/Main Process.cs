@@ -19,11 +19,11 @@ namespace IntermediateExcercise
             {
 
                 Console.WriteLine("Select Exercise to run:");
-                Console.WriteLine("Exercise 5.1 = 1");
-                Console.WriteLine("Exercise 5.2 = 2");
-                Console.WriteLine("Exercise 6   = 3");
-                Console.WriteLine("Exercise 8   = 4");
-                Console.WriteLine("Testing      = 5");
+                Console.WriteLine("Exercise 1 = 1");
+                Console.WriteLine("Exercise 2 = 2");
+                Console.WriteLine("Exercise 3 = 3");
+                Console.WriteLine("Exercise 4 = 4");
+                Console.WriteLine("Exercise 5 = 5");
                 Console.WriteLine("Leave Program: 'Exit'");
 
                 cInput = Console.ReadLine();
