@@ -28,17 +28,17 @@ namespace IntermediateExcercise
 
                 cInput = Console.ReadLine();
 
-                if (cInput == "Exit" || cInput == "exit" || cInput == "0")
-                {
-                    lExit = true;
-                    break;
-                }
+                lExit = (cInput == "Exit" || cInput == "exit" || cInput == "0");
+
+                if (lExit) break;
 
                 iFunction = Convert.ToInt32(cInput);
                 
                 if (iFunction <= 0 || iFunction > 5)
                 {
-                    Console.WriteLine("Invalid Function Selected. Please choose valid option.");;
+                    Console.WriteLine("Invalid Function Selected. Please choose valid option.");
+                    Console.WriteLine("");
+                    Console.WriteLine("");
                 }
                 
                 switch (iFunction)
