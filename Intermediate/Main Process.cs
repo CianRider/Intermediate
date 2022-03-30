@@ -28,46 +28,42 @@ namespace IntermediateExcercise
 
                 cInput = Console.ReadLine();
 
-                lExit = (cInput == "Exit" || cInput == "exit" || cInput == "0");
+                lExit = (cInput == "Exit" || cInput == "exit" || cInput == "0" || cInput == "");
 
                 if (lExit) break;
 
-                iFunction = Convert.ToInt32(cInput);
-                
-                if (iFunction <= 0 || iFunction > 5)
+                if (!int.TryParse(cInput, out iFunction))
+                    Console.WriteLine("Invalid Menu Selected. Please choose valid option.\n\n");
+                else
                 {
-                    Console.WriteLine("Invalid Function Selected. Please choose valid option.");
-                    Console.WriteLine("");
-                    Console.WriteLine("");
-                }
-                
-                switch (iFunction)
-                {
-                    case 1:
-                        Console.WriteLine("Never");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        break;
-                    case 2:
-                        Console.WriteLine("Gonna");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        break;
-                    case 3:
-                        Console.WriteLine("Give");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        break;
-                    case 4:
-                        Console.WriteLine("You");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        break;
-                    case 5:
-                        Console.WriteLine("Up");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        break;
+                    if (iFunction <= 0 || iFunction > 5)
+                    {
+                        Console.WriteLine("Invalid Menu Selected. Please choose valid option.\n\n");
+                    }
+
+                    switch (iFunction)
+                    {
+                        case 1:
+                            Console.WriteLine("Navigating to Excersice 1 Menu... \n\n");
+                            var Classes = new ExcerciseClass();
+                            Classes.Classes();
+                            break;
+                        case 2:
+                            Console.WriteLine("Gonna\n\n");
+                            break;
+                        case 3:
+                            Console.WriteLine("Give\n\n");
+                            break;
+                        case 4:
+                            Console.WriteLine("You\n\n");
+                            break;
+                        case 5:
+                            Console.WriteLine("Up\n\n");
+                            break;
+                        default:
+                            Console.WriteLine("How did you get here!");
+                            break;
+                    }
                 }
             }
         }
