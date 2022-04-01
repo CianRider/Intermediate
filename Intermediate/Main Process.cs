@@ -14,6 +14,7 @@ namespace IntermediateExcercise
             string cInput;
             int iFunction;
             bool lExit = false;
+            var Classes = new ExerciseClass();
 
             while (!lExit)
             {
@@ -44,8 +45,7 @@ namespace IntermediateExcercise
                     switch (iFunction)
                     {
                         case 1:
-                            Console.WriteLine("Navigating to Excersice 1 Menu... \n\n");
-                            var Classes = new ExcerciseClass();
+                            Console.WriteLine("Navigating to Exercise 1 Menu... \n\n");
                             Classes.Classes();
                             break;
                         case 2:

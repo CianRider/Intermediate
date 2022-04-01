@@ -8,7 +8,7 @@
 
 namespace IntermediateExcercise
 {
-    class ExcerciseClass
+    class ExerciseClass
     {
         public void Classes()
         {
@@ -16,8 +16,8 @@ namespace IntermediateExcercise
             var lExit = false;
 
             Console.WriteLine("Please Select Which Function you wish to run:");
-            Console.WriteLine("Launch Stopwatch = 1");
-            //Console.WriteLine("Display Maximum = 2");
+            Console.WriteLine("Launch Stopwatch            = 1");
+            Console.WriteLine("Launch StackOverflow Screen = 2");
             //Console.WriteLine("Determine Picture Orientation = 3");
             //Console.WriteLine("Test Speed Camera = 4");
             Console.WriteLine("Leave Program: 'Exit'");
@@ -40,7 +40,7 @@ namespace IntermediateExcercise
             else
             {
 
-                if (iFunction <= 0 || iFunction > 1)
+                if (iFunction <= 0 || iFunction > 2)
                 {
                     Console.WriteLine("Invalid Excersice Selected. Returning to main program.\n\n");
                     return;
@@ -49,12 +49,14 @@ namespace IntermediateExcercise
                 switch (iFunction)
                 {
                     case 1:
-                        Console.WriteLine("Initialising Stopwatch program");
+                        Console.WriteLine("Initialising Stopwatch Program....");
                         var Timer = new Laptimer();
                         Timer.Timer();
                         break;
                     case 2:
-                        Console.WriteLine("Initiating Max Number Comparison");
+                        Console.WriteLine("Initialising StackOverflow Program....");
+                        var Stack = new StackOverflow();
+                        Stack.MainScreen();
                         break;
                     case 3:
                         Console.WriteLine("Initiate Picture Orientation");

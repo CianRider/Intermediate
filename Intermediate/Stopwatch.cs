@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 
+/*-----------------------------------------------------------------------
+ This program was developed to function as a stopwatch. The functions
+ inside allow for 1 timer to be started, a split time to be given and
+ the timer to be stopped
+-----------------------------------------------------------------------*/
 
 namespace IntermediateExcercise
 {
     class Laptimer
     {
-
-
         bool lRunning = false;
 
         Stopwatch stopwatch = new Stopwatch();
-
 
         public void Timer()
         {
@@ -62,9 +63,7 @@ namespace IntermediateExcercise
 
                     }
                 }
-
             }
-
         }
 
         private string Start()
