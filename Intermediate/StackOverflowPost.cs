@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Intermediate
+{
+    public class StackOverflowPost
+    {
+        public string Title { get; set; }
+        public DateTime Createddt { get; set; }
+        public string Description { get; set; }
+        public int Vote { get; set; }
+
+        public StackOverflowPost(string title, DateTime createddt, string description, int vote)
+        {
+            Title = title;
+            Createddt = createddt;
+            Description = description;
+            Vote = vote;
+        }
+    }
+
+
+}
