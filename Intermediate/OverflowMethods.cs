@@ -8,23 +8,11 @@ namespace IntermediateExcercise
 {
     class OverflowMethods
     {
-        //List<String> Titles = new List<string>(); //This needed a type declaration (var -> List<string>)
-        public List<StackOverflowPost> Posts = new List<StackOverflowPost>(); //Having the titles separate from the posts is too complicated. I created a class and made a list of that.
-        private string[] Descriptions;
-        private DateTime[] DateCreated;
-        private int[] Likes;
+        public List<StackOverflowPost> Posts = new List<StackOverflowPost>();
+        public List<StackOverflowPostComment> Comments = new List<StackOverflowPostComment>();
         private string Title { get; set; }
         private string Description { get; set; }
         private DateTime Createddt { get; set; }
-        private int Vote { get; set; }
-
-        //public OverflowMethods()
-        //{
-        //    Titles = new string[] { };
-        //    Descriptions = new string[] { };
-        //    DateCreated = new DateTime[] { };
-        //    Likes = new int[] { };
-        //}
 
         public void CreatePost()
         {
@@ -52,9 +40,40 @@ namespace IntermediateExcercise
             CreateListEntry(Title, Createddt, Description);
         }
 
+        public void CreateComment(int Post)
+        {
+            string cInput;
+
+            Console.WriteLine("Comment Title:");
+            cInput = Console.ReadLine();
+
+            Title = cInput;
+            Createddt = DateTime.Today;
+            cInput = "";
+
+            Console.WriteLine("Comment Title:\t{0}", Title);
+            Console.WriteLine("Created:\t{0}", Createddt);
+
+            Console.WriteLine("Description:");
+            cInput = Console.ReadLine();
+
+            Description = cInput;
+
+            Console.WriteLine("Comment Title:\t{0}", Title);
+            Console.WriteLine("Created:\t{0}", Createddt);
+
+            Console.WriteLine("Description:\n{0}", Description);
+            CreateListEntry(Title, Createddt, Description, Post);
+        }
+
         private void CreateListEntry(string Title, DateTime Createddt, string Description)
         {
             Posts.Add(new StackOverflowPost(Title, Createddt, Description, 0)); //Adds a new Post object to the list
+        }
+
+        private void CreateListEntry(string Title, DateTime Createddt, string Description, int Post)
+        {
+            Comments.Add(new StackOverflowPostComment(Title, Createddt, Description, 0, Post)); //Adds a new Post object to the list
         }
 
         public void ViewEntries()
@@ -69,12 +88,8 @@ namespace IntermediateExcercise
 
         public string Entries(out int entryNo)
         {
-            //This is a little complicated. I'm rewriting it.
             entryNo = 0;
-            if (Posts.Count == 0)
-            { 
-                return "";
-            }
+            if (Posts.Count == 0) return "";
             else
             {                
                 string entries = "";
@@ -93,34 +108,43 @@ namespace IntermediateExcercise
                 }
                 return entries;
             }
+        }
 
-            //var enties = "";
-            //entryNo = 0;
-            //string ctitle;
+        public string Post(int Element)
+        {
+            string fullPost = "";
 
-            //if (Likes == null || Likes.Count() == 0) return ""; //Why are you checking by like count? Surely it should be post count
-            //else
-            //{
+            var post = Posts.ElementAt(Element);
 
-            //    foreach (int like in Likes)
-            //    {
-            //        ctitle = Titles.ElementAt(entryNo);
+            fullPost = Convert.ToString(post.Createddt) + "\n"
+                     + Convert.ToString(post.Vote)      + "\t\t" + post.Title + "\n\n"
+                     + post.Description;
+            
+            return fullPost;
+        }
 
-            //        entryNo++;
+        public void UpDownVode(int Element, int Change)
+        {
+            var post = Posts.ElementAt(Element);
 
-            //        if (enties == "")
-            //        {
-            //            enties = Convert.ToString(entryNo) + ")\t" + ctitle + "\t\t" + Convert.ToString(like);
-            //        }
-            //        else
-            //        {
-            //            enties = enties + "\n" + Convert.ToString(entryNo) + ")\t" + ctitle + "\t\t" + Convert.ToString(like);
-            //        }
-            //    }
+            post.Vote = post.Vote += Change;
+        }
 
-            //}
+        public string Comment(int Element)
+        {
+            string fullComments = "";
 
-            //return enties;
+            var comments = Comments.FindAll(e => e.PostComment == Element).ToList();
+
+            foreach(var comm in comments)
+            {
+                fullComments = fullComments
+                             + Convert.ToString(comm.Createddt) + "\n"
+                             + comm.Title + "\n"
+                             + comm.Description + "\n\n";
+            }
+
+            return fullComments;
         }
     }
 }
